@@ -51,4 +51,31 @@ db.commit()
 db.close()
 
 ```
+## Python Insert SQL
+This code connects to a MySQL database and inserts a record into the "User_Information" table.
+```
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jan 23 22:25:28 2024
+
+@author: USER
+"""
+
+import mysql.connector 
+from datetime import datetime
+
+# Connecting to the specified database
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="",
+    database="Rental_Car_UTM"
+)
+
+mycursor= db.cursor()
+
+mycursor.execute("INSERT INTO User_Information (user, created, gender) VALUES(%s, %s, %s)", ("Kamal", datetime.now(), "M"))
+
+db.commit()
+```
 
