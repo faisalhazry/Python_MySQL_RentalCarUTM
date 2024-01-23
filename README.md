@@ -107,6 +107,30 @@ result_f = mycursor.fetchall()
 mycursor.execute("SELECT id, user FROM User_Information WHERE gender = 'M'")
 result_m = mycursor.fetchall()
 
+
+# Show tables in the database
+mycursor.execute("SHOW TABLES")
+tables = mycursor.fetchall()
+
+
+
+# Fetch data from the "User_Information" table
+mycursor.execute("SELECT * FROM User_Information")
+Q1 = mycursor.fetchall()
+
+
+
+# Print the list of tables
+print("Tables in the database:")
+for table in tables:
+    print(table)
+
+# Print the list of tables
+print("Tables in user_information:")
+for table in Q1:
+    print(Q1)
+
+
 # Print the results
 print("Gender 'F':", result_f)
 print("Gender 'M':", result_m)
