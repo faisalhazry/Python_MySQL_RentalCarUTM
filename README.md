@@ -83,4 +83,35 @@ db.commit()
 ```
 ![image](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/d69051df-df6e-408d-b714-f7dfd5a2b14e)
 
+## Excute list table in python 
+This code connects to a MySQL database and retrieves user information for genders 'F' and 'M'.
+```
+import mysql.connector 
+from datetime import datetime
+
+# Connecting to the specified database
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="",
+    database="Rental_Car_UTM"
+)
+
+mycursor = db.cursor()
+
+# Execute the first query for 'F'
+mycursor.execute("SELECT id, user FROM User_Information WHERE gender = 'F'")
+result_f = mycursor.fetchall()
+
+# Execute the second query for 'M'
+mycursor.execute("SELECT id, user FROM User_Information WHERE gender = 'M'")
+result_m = mycursor.fetchall()
+
+# Print the results
+print("Gender 'F':", result_f)
+print("Gender 'M':", result_m)
+```
+![image](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/8416d8f9-bc7f-47dd-abf4-e176a2500ad1)
+
+
 
