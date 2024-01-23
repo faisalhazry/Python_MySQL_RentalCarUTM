@@ -7,6 +7,13 @@ There will be 3 table using a foreign key relationship involves a parent table t
 table that propose create is User_Information, Milage_Car, User_TimeRent_IN/OUT
 
 ```
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jan 23 20:00:25 2024
+
+@author: USER
+"""
+
 import mysql.connector 
 from datetime import datetime
 
@@ -33,12 +40,15 @@ db = mysql.connector.connect(
 
 # Creating the table
 mycursor = db.cursor()
-mycursor.execute("CREATE TABLE User_Information (namae varchar(50) NOT NULL, created datetime NOT NULL, gender ENUM('M', 'F') NOT NULL, id int PRIMARY KEY NOT NULL AUTO_INCREMENT)")
+mycursor.execute("CREATE TABLE User_Information (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, user varchar(50) NOT NULL, created datetime NOT NULL, gender ENUM('M', 'F') NOT NULL)")
+mycursor.execute("CREATE TABLE Milage (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, CarSelect ENUM('Corolo', 'Kancil', 'Axia') NOT NULL ,Milage varchar(50) NOT NULL)")
+mycursor.execute("CREATE TABLE Duration_Rent (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, `Time IN` varchar(50) NOT NULL, `Time OUT` varchar(50) NOT NULL)")
 
 # Committing the changes
 db.commit()
 
 # Closing the database connection
 db.close()
+
 ```
 
