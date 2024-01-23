@@ -51,6 +51,9 @@ db.commit()
 db.close()
 
 ```
+![image](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/fe9e51be-b0fa-4507-95f4-90938b42a510)
+
+
 ## Python Insert SQL
 This code connects to a MySQL database and inserts a record into the "User_Information" table.
 ```
@@ -78,4 +81,5 @@ mycursor.execute("INSERT INTO User_Information (user, created, gender) VALUES(%s
 
 db.commit()
 ```
+![image](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/ccc2a96d-6bd9-4e6f-a436-f23472664df6)
 
