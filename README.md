@@ -81,5 +81,6 @@ mycursor.execute("INSERT INTO User_Information (user, created, gender) VALUES(%s
 
 db.commit()
 ```
-![image](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/ccc2a96d-6bd9-4e6f-a436-f23472664df6)
+![image](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/d69051df-df6e-408d-b714-f7dfd5a2b14e)
+
 
