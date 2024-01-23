@@ -145,4 +145,120 @@ Q2 = mycursor.execute("CREATE TABLE Milage (userId int PRIMARY KEY, FOREIGN KEY(
 Q3 = mycursor.execute("CREATE TABLE Duration_Rent (userId int PRIMARY KEY,FOREIGN KEY(userId) REFERENCES User_Information(id), `Time IN` varchar(50) NOT NULL, `Time OUT` varchar(50) NOT NULL)")
 ```
 
+## FULL CODE
+The code establishes a MySQL database connection, creates tables for user information, car mileage, and rental duration. It inserts sample data, retrieves and prints information from the tables, and then commits the changes to the database. The program ensures proper newline formatting for clearer output in the terminal.
+
+```
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jan 23 23:36:10 2024
+@author: USER
+"""
+
+import mysql.connector 
+from datetime import datetime
+
+# Establishing connection without specifying the database
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="",
+)
+
+users = [("Ali", "M"),
+         ("Kamal", "M"),
+         ("Siti", "F")]
+
+CarStatus = [("Corola", "50KM"),
+             ("Axia", "7KM"),
+             ("Kancil", "80KM")]
+
+Time_Rent = [("6:00 AM", "1:00 PM"),
+             ("10:00 AM", "3:00 PM"),
+             ("11:00 AM", "7:00 PM")]
+
+# Creating a cursor
+mycursor = db.cursor()
+
+# Creating the database if it does not exist
+mycursor.execute("CREATE DATABASE IF NOT EXISTS Rental2_Car_UTM")
+
+# Connecting to the specified database
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="",
+    database="Rental2_Car_UTM"
+)
+
+# Creating the tables
+mycursor = db.cursor()
+
+Q1 = mycursor.execute("CREATE TABLE User_Information (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, user varchar(50) NOT NULL, created datetime NOT NULL, gender ENUM('M', 'F') NOT NULL)")
+Q2 = mycursor.execute("CREATE TABLE Mileage (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, CarSelect ENUM('Corola', 'Kancil', 'Axia') NOT NULL ,Mileage varchar(50) NOT NULL)")
+Q3 = mycursor.execute("CREATE TABLE Duration_Rent (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, `Time IN` varchar(50) NOT NULL, `Time OUT` varchar(50) NOT NULL)")
+
+mycursor.execute(Q1)
+mycursor.execute(Q2)
+mycursor.execute(Q3)
+
+
+
+print("Table Availble")
+# Showing the tables
+mycursor.execute("SHOW TABLES")
+for x in mycursor:
+    print(x)
+    
+
+##SEND TO SQL
+# Inserting data into User_Information table
+Q4 = "INSERT INTO User_Information (user, gender) VALUES (%s, %s)"
+mycursor.executemany(Q4, users)
+
+# Inserting data into Mileage table
+Q5 = "INSERT INTO Mileage (CarSelect, Mileage) VALUES (%s, %s)"
+mycursor.executemany(Q5, CarStatus)
+
+# Inserting data into Duration_Rent table
+Q6 = "INSERT INTO Duration_Rent (`Time IN`, `Time OUT`) VALUES (%s, %s)"
+mycursor.executemany(Q6, Time_Rent)
+
+
+# Fetch data from the "User_Information" table
+mycursor.execute("SELECT * FROM User_Information")
+USR_INFO = mycursor.fetchall() 
+
+mycursor.execute("SELECT * FROM Duration_Rent")
+DUR = mycursor.fetchall() 
+
+mycursor.execute("SELECT * FROM Mileage")
+Milage = mycursor.fetchall() 
+
+print("\nUser Information")
+for x in USR_INFO:
+    print(x)
+    
+print("\nDuration_Rent") 
+for x in DUR:
+    print(x)  
+
+print("\nCar Status") 
+for x in Milage:
+    print(x)
+
+
+# Committing the changes
+db.commit()
+
+# Closing the database connection
+db.close()
+```
+![Table](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/a7160af0-c28a-4444-aed2-9d57feebeff2)
+
+![image](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/8cffb20d-1e2a-4c39-9eff-38097143c146)
+
+
+
+
 
