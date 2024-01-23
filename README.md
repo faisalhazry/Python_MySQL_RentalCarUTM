@@ -137,5 +137,12 @@ print("Gender 'M':", result_m)
 ```
 ![image](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/8416d8f9-bc7f-47dd-abf4-e176a2500ad1)
 
+## Creating linked table
+In the provided code, three SQL queries use the execute method to create tables in a MySQL database. The FOREIGN KEY constraint establishes a link between tables, ensuring referential integrity by referencing a primary key in another table. This maintains consistency and relationships between tables in a relational database.
+```
+Q1 = mycursor.execute("CREATE TABLE User_Information (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, user varchar(50) NOT NULL, created datetime NOT NULL, gender ENUM('M', 'F') NOT NULL)")
+Q2 = mycursor.execute("CREATE TABLE Milage (userId int PRIMARY KEY, FOREIGN KEY(userId) REFERENCES User_Information(id), CarSelect ENUM('Corola', 'Kancil', 'Axia') NOT NULL ,Milage varchar(50) NOT NULL)")
+Q3 = mycursor.execute("CREATE TABLE Duration_Rent (userId int PRIMARY KEY,FOREIGN KEY(userId) REFERENCES User_Information(id), `Time IN` varchar(50) NOT NULL, `Time OUT` varchar(50) NOT NULL)")
+```
 
 
