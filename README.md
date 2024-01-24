@@ -290,6 +290,9 @@ def handle_client(client_socket):
     CarStatus = received_data.get('CarStatus', [])
     Time_Rent = received_data.get('Time_Rent', [])
     
+    
+    
+    
     # Your SQL code to insert data into tables
     Q4 = "INSERT INTO User_Information (user, gender) VALUES (%s, %s)"
     mycursor.executemany(Q4, users)
@@ -302,6 +305,10 @@ def handle_client(client_socket):
 
     # Committing the changes
     db.commit()
+    
+    
+    
+    
 
     # Fetching data and displaying it
     mycursor.execute("SELECT * FROM User_Information")
@@ -312,6 +319,11 @@ def handle_client(client_socket):
 
     mycursor.execute("SELECT * FROM Mileage")
     Milage = mycursor.fetchall()
+    
+    
+    
+    
+    
 
     print("\nUser Information")
     for x in USR_INFO:
@@ -328,6 +340,11 @@ def handle_client(client_socket):
     # Sending a response to the client
     client_socket.send("Data received and stored successfully".encode())
     client_socket.close()
+    
+    
+    
+    
+    
 
 
 # Establishing connection without specifying the database
@@ -354,13 +371,18 @@ db = mysql.connector.connect(
 # Creating the tables
 mycursor = db.cursor()
 
+
+
+# Uncoment for first time creation datra base
+'''
 Q1 = mycursor.execute("CREATE TABLE User_Information (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, user varchar(50) NOT NULL, created datetime NOT NULL, gender ENUM('M', 'F') NOT NULL)")
 Q2 = mycursor.execute("CREATE TABLE Mileage (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, CarSelect ENUM('Corola', 'Kancil', 'Axia') NOT NULL ,Mileage varchar(50) NOT NULL)")
 Q3 = mycursor.execute("CREATE TABLE Duration_Rent (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, `Time IN` varchar(50) NOT NULL, `Time OUT` varchar(50) NOT NULL)")
 
-mycursor.execute(Q1)
-mycursor.execute(Q2)
-mycursor.execute(Q3)
+#mycursor.execute(Q1)
+#mycursor.execute(Q2)
+#mycursor.execute(Q3)
+'''
 
 # Creating the TCP server
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -373,6 +395,7 @@ while True:
     client_socket, addr = server.accept()
     print(f"Accepted connection from {addr}")
     handle_client(client_socket)
+
 ```
 
 # Client code
