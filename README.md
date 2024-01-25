@@ -145,7 +145,7 @@ Q2 = mycursor.execute("CREATE TABLE Milage (userId int PRIMARY KEY, FOREIGN KEY(
 Q3 = mycursor.execute("CREATE TABLE Duration_Rent (userId int PRIMARY KEY,FOREIGN KEY(userId) REFERENCES User_Information(id), `Time IN` varchar(50) NOT NULL, `Time OUT` varchar(50) NOT NULL)")
 ```
 
-## Code SQL Beta
+## Code Server SQL Only
 The code establishes a MySQL database connection, creates tables for user information, car mileage, and rental duration. It inserts sample data, retrieves and prints information from the tables, and then commits the changes to the database. The program ensures proper newline formatting for clearer output in the terminal.
 
 ```
