@@ -259,7 +259,7 @@ db.close()
 ![image](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/8cffb20d-1e2a-4c39-9eff-38097143c146)
 
 
-# Server code 
+# Server code TCP
 ```
 # -*- coding: utf-8 -*-
 """
@@ -398,7 +398,7 @@ while True:
 
 ```
 
-# Client code
+# Client code TCP
 ```
 import socket
 import pickle
