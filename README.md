@@ -408,7 +408,7 @@ user_name = input("Enter user name: ")
 user_gender = input("Enter user gender (M/F): ")
 
 # Input car status data from the terminal
-car_model = input("Enter car model (Corola/Kancil): ")
+car_model = input("Enter car model (Corola/Kancil/Axia): ")
 mileage = input("Enter mileage: ")
 
 # Input time rent data from the terminal
@@ -438,6 +438,7 @@ print(response.decode())
 
 # Closing the socket
 client_socket.close()
+
 ```
 
 
