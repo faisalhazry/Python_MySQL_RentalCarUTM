@@ -1,5 +1,8 @@
 # Python_MySQL_RentalCarUTM
 An Assigment Netwrok Programing using Python MySQL  - Foreign Keys &amp; Relating Tables
+## PROJECT DESIGN PROPOSAL
+![Squeance diagram](https://github.com/faisalhazry/Python_MySQL_RentalCarUTM/assets/121289405/bba00d95-bd72-4179-9f0f-de6daa23e617)
+
 
 ## Creating table 
 There will be 3 table using a foreign key relationship involves a parent table that holds the initial column values, and a child table with column values that reference the parent column values. A foreign key constraint is defined on the child table. 
